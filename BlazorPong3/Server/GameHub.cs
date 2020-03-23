@@ -28,9 +28,25 @@ namespace BlazorPong3.Server
             await Clients.All.SendAsync(SignalRMessages.RECEIVE, username, message);
         }
 
-        public async Task BallPositionMessage(string username, string message)
+        public async Task bpm(string username, string message)
         {
-            await Clients.All.SendAsync(SignalRMessages.BALL_POSITION, username, message);
+            var currentId = Context.ConnectionId;
+
+            await Clients.AllExcept(currentId).SendAsync(SignalRMessages.BALL_POSITION, username, message);
+        }
+
+        public async Task ppm(string username, string message)
+        {
+            var currentId = Context.ConnectionId;
+
+            await Clients.AllExcept(currentId).SendAsync(SignalRMessages.PALETTE_POSITION, username, message);
+        }
+
+        public async Task StartGameMessage(string username)
+        {
+            var currentId = Context.ConnectionId;
+
+            await Clients.AllExcept(currentId).SendAsync(SignalRMessages.START_GAME, username);
         }
 
         /// <summary>
@@ -38,7 +54,7 @@ namespace BlazorPong3.Server
         /// </summary>
         /// <param name="username"></param>
         /// <returns></returns>
-        public async Task Register(string username)
+        public async Task RegisterMessage(string username)
         {
             var currentId = Context.ConnectionId;
             if (!userLookup.ContainsKey(currentId))
@@ -94,8 +110,9 @@ namespace BlazorPong3.Server
                 username = "[unknown]";
 
             userLookup.Remove(id);
+
             await Clients.AllExcept(Context.ConnectionId).SendAsync(
-                SignalRMessages.RECEIVE,
+                SignalRMessages.DISCONNECT,
                 username, $"{username} has left the game");
             await base.OnDisconnectedAsync(e);
         }

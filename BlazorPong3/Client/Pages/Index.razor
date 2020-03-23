@@ -11,6 +11,7 @@
 <div class="debug">
     <div>Connected:@IsConnected</div>
     <div>Player:@PlayerID</div>
+    <div>@PlayerOnePoints : @PlayerTowPoints</div>
     <div>@ballLeft;@ballTop</div>
     @{
         foreach (var m in messages)
@@ -80,6 +81,9 @@
     static bool requestPlaneSize = false;
     public bool GameStarted { get; set; } = false;
 
+    public int PlayerOnePoints { get; set; } = 0;
+    public int PlayerTowPoints { get; set; } = 0;
+
     System.Timers.Timer runingTimer = new System.Timers.Timer();
 
     public string UserName { get; set; }
@@ -96,7 +100,7 @@
         BallTop = $"{ballTop}px";
         BallLeft = $"{ballLeft}px";
 
-        runingTimer.Interval = 25;
+        runingTimer.Interval = 15;
         runingTimer.Elapsed += OnTimerElapsed;
 
         hubConnection = new HubConnectionBuilder()
@@ -106,22 +110,41 @@
         hubConnection.On<string, string>(SignalRMessages.RECEIVE, (user, message) =>
         {
             Console.WriteLine($"RECEIVE:{message}");
+
             HandleReceiveMessage(user, message);
         });
 
         hubConnection.On<string, string>(SignalRMessages.BALL_POSITION, (user, message) =>
         {
+            Console.WriteLine($"BALL_POSITION");
+
             if (!_isPlayerOne)
             {
                 var position = message.Split(';');
                 ballLeft = int.Parse(position[0]);
                 ballTop = int.Parse(position[1]);
+
+                if(position.Length > 2)
+                {
+                    _lPaletteTop = int.Parse(position[2]);
+                }
+            }
+        });
+
+        hubConnection.On<string, string>(SignalRMessages.PALETTE_POSITION, (user, message) =>
+        {
+            Console.WriteLine($"PALETTE_POSITION");
+
+            if (_isPlayerOne)
+            {
+                _rPaletteTop = int.Parse(message);
             }
         });
 
         hubConnection.On<string, string>(SignalRMessages.PLAYER_ID, async (user, message) =>
         {
             Console.WriteLine($"PLAYER_ID:{message}");
+
             if (message == "1")
             {
                 _isPlayerOne = true;
@@ -140,11 +163,24 @@
             }
         });
 
-        hubConnection.On<string, string>(SignalRMessages.START_GAME, async (user, message) =>
+        hubConnection.On<string>(SignalRMessages.START_GAME, async (user) =>
         {
+            Console.WriteLine($"START_GAME");
+
             GameStarted = true;
 
             runingTimer.Start();
+        });
+
+        hubConnection.On<string, string>(SignalRMessages.DISCONNECT, async (user, message) =>
+        {
+            Console.WriteLine($"DISCONNECT");
+
+            GameStarted = false;
+
+            runingTimer.Stop();
+
+            messages.Add(message);
         });
 
         await hubConnection.StartAsync();
@@ -163,8 +199,8 @@
                 planeWidth = dimensions.Width;
                 planeHeight = dimensions.Height;
 
-                ballLeft = planeWidth / 2 - 20;
-                ballTop = planeHeight / 2 - 20;
+                ballLeft = planeWidth / 2 - 10;
+                ballTop = planeHeight / 2 - 10;
 
                 BallTop = $"{ballTop}px";
                 BallLeft = $"{ballLeft}px";
@@ -202,6 +238,33 @@
         lPaletteTop = $"{_lPaletteTop}px;";
         rPaletteTop = $"{_rPaletteTop}px;";
 
+        if (ballLeft <= 60)
+        {
+            if (ballTop + 10 >= _lPaletteTop && ballTop + 10 <= _lPaletteTop + 120)
+            {
+                ballVelocityX *= -1;
+            }
+        }
+
+        if (ballLeft + 20 >= planeWidth - 60)
+        {
+            if (ballTop + 10 >= _rPaletteTop && ballTop + 10 <= _rPaletteTop + 120)
+            {
+                ballVelocityX *= -1;
+            }
+        }
+
+        //check wall bounce
+        if (ballLeft <= 0)
+        {
+            PlayerTowPoints++;
+        }
+        else if (ballLeft + 20 >= planeWidth)
+        {
+            PlayerOnePoints++;
+        }
+
+
         if (_isPlayerOne)
         {
             //bottom
@@ -217,6 +280,10 @@
             }
 
             await SendBallPositionAsync();
+        }
+        else
+        {
+            await SendPalettePosition();
         }
 
         StateHasChanged();
@@ -273,6 +340,7 @@
     public async Task StartClient()
     {
         Console.WriteLine($"UserName:{UserName}");
+
         if (!string.IsNullOrEmpty(UserName))
         {
             await JS.InvokeAsync<bool>("hideUserNameDialog");
@@ -307,7 +375,16 @@
         if (hubConnection.State != HubConnectionState.Connected)
             throw new InvalidOperationException("Client not started");
         // send the message
-        await hubConnection.SendAsync(SignalRMessages.BALL_POSITION, UserName, $"{ballLeft};{ballTop}");
+        await hubConnection.SendAsync(SignalRMessages.BALL_POSITION, UserName, $"{ballLeft};{ballTop};{_lPaletteTop}");
+    }
+
+    public async Task SendPalettePosition()
+    {
+        // check we are connected
+        if (hubConnection.State != HubConnectionState.Connected)
+            throw new InvalidOperationException("Client not started");
+        // send the message
+        await hubConnection.SendAsync(SignalRMessages.PALETTE_POSITION, UserName, $"{_rPaletteTop}");
     }
 
     public async Task StopAsync()
