@@ -1,0 +1,9 @@
+C:\Users\Piotrek\source\repos\BlazorPong\BlazorPong3\Shared\bin\Debug\netstandard2.1\BlazorPong3.Shared.deps.json
+C:\Users\Piotrek\source\repos\BlazorPong\BlazorPong3\Shared\bin\Debug\netstandard2.1\BlazorPong3.Shared.dll
+C:\Users\Piotrek\source\repos\BlazorPong\BlazorPong3\Shared\bin\Debug\netstandard2.1\BlazorPong3.Shared.pdb
+C:\Users\Piotrek\source\repos\BlazorPong\BlazorPong3\Shared\obj\Debug\netstandard2.1\BlazorPong3.Shared.csproj.CoreCompileInputs.cache
+C:\Users\Piotrek\source\repos\BlazorPong\BlazorPong3\Shared\obj\Debug\netstandard2.1\BlazorPong3.Shared.AssemblyInfoInputs.cache
+C:\Users\Piotrek\source\repos\BlazorPong\BlazorPong3\Shared\obj\Debug\netstandard2.1\BlazorPong3.Shared.AssemblyInfo.cs
+C:\Users\Piotrek\source\repos\BlazorPong\BlazorPong3\Shared\obj\Debug\netstandard2.1\BlazorPong3.Shared.dll
+C:\Users\Piotrek\source\repos\BlazorPong\BlazorPong3\Shared\obj\Debug\netstandard2.1\BlazorPong3.Shared.pdb
+C:\Users\Piotrek\source\repos\BlazorPong\BlazorPong3\Shared\obj\Debug\netstandard2.1\BlazorPong3.Shared.csprojAssemblyReference.cache

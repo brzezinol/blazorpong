@@ -1,0 +1,226 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Piotrek\\source\\repos\\BlazorPong\\BlazorPong3\\Server\\BlazorPong3.Server.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Piotrek\\source\\repos\\BlazorPong\\BlazorPong3\\Client\\BlazorPong3.Client.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Piotrek\\source\\repos\\BlazorPong\\BlazorPong3\\Client\\BlazorPong3.Client.csproj",
+        "projectName": "BlazorPong3.Client",
+        "projectPath": "C:\\Users\\Piotrek\\source\\repos\\BlazorPong\\BlazorPong3\\Client\\BlazorPong3.Client.csproj",
+        "packagesPath": "C:\\Users\\Piotrek\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Piotrek\\source\\repos\\BlazorPong\\BlazorPong3\\Client\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Piotrek\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.telerik.com/nuget": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "projectReferences": {
+              "C:\\Users\\Piotrek\\source\\repos\\BlazorPong\\BlazorPong3\\Shared\\BlazorPong3.Shared.csproj": {
+                "projectPath": "C:\\Users\\Piotrek\\source\\repos\\BlazorPong\\BlazorPong3\\Shared\\BlazorPong3.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Blazor": {
+              "target": "Package",
+              "version": "[3.2.0-preview1.20073.1, )"
+            },
+            "Microsoft.AspNetCore.Blazor.Build": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.2.0-preview1.20073.1, )"
+            },
+            "Microsoft.AspNetCore.Blazor.DevServer": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.2.0-preview1.20073.1, )"
+            },
+            "Microsoft.AspNetCore.Blazor.HttpClient": {
+              "target": "Package",
+              "version": "[3.2.0-preview2.20160.5, )"
+            },
+            "Microsoft.AspNetCore.SignalR.Client": {
+              "target": "Package",
+              "version": "[5.0.0-preview.1.20124.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Piotrek\\source\\repos\\BlazorPong\\BlazorPong3\\Server\\BlazorPong3.Server.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Piotrek\\source\\repos\\BlazorPong\\BlazorPong3\\Server\\BlazorPong3.Server.csproj",
+        "projectName": "BlazorPong3.Server",
+        "projectPath": "C:\\Users\\Piotrek\\source\\repos\\BlazorPong\\BlazorPong3\\Server\\BlazorPong3.Server.csproj",
+        "packagesPath": "C:\\Users\\Piotrek\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Piotrek\\source\\repos\\BlazorPong\\BlazorPong3\\Server\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Piotrek\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.telerik.com/nuget": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Users\\Piotrek\\source\\repos\\BlazorPong\\BlazorPong3\\Client\\BlazorPong3.Client.csproj": {
+                "projectPath": "C:\\Users\\Piotrek\\source\\repos\\BlazorPong\\BlazorPong3\\Client\\BlazorPong3.Client.csproj"
+              },
+              "C:\\Users\\Piotrek\\source\\repos\\BlazorPong\\BlazorPong3\\Shared\\BlazorPong3.Shared.csproj": {
+                "projectPath": "C:\\Users\\Piotrek\\source\\repos\\BlazorPong\\BlazorPong3\\Shared\\BlazorPong3.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Blazor.Server": {
+              "target": "Package",
+              "version": "[3.2.0-preview1.20073.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Piotrek\\source\\repos\\BlazorPong\\BlazorPong3\\Shared\\BlazorPong3.Shared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Piotrek\\source\\repos\\BlazorPong\\BlazorPong3\\Shared\\BlazorPong3.Shared.csproj",
+        "projectName": "BlazorPong3.Shared",
+        "projectPath": "C:\\Users\\Piotrek\\source\\repos\\BlazorPong\\BlazorPong3\\Shared\\BlazorPong3.Shared.csproj",
+        "packagesPath": "C:\\Users\\Piotrek\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Piotrek\\source\\repos\\BlazorPong\\BlazorPong3\\Shared\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Piotrek\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.telerik.com/nuget": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
